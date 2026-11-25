@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { defineConfig } from 'vite';
 
-const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'AutomacaoCasa';
+const DEFAULT_REPO_NAME = 'AutomacaoCasa';
 
 function normalizeBasePath(rawBase?: string): string | undefined {
   if (!rawBase) return undefined;
@@ -15,6 +15,7 @@ function normalizeBasePath(rawBase?: string): string | undefined {
 }
 
 export default defineConfig(({ mode }) => {
+  const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || DEFAULT_REPO_NAME;
   const basePath =
     normalizeBasePath(process.env.VITE_BASE_PATH) ||
     (mode === 'development' ? '/' : `/${repoName}/`);
