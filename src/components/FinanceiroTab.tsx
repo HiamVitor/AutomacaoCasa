@@ -90,7 +90,11 @@ export const FinanceiroTab: React.FC<FinanceiroTabProps> = ({ currentAdmin }) =>
     );
   }
 
-  const iframeSrc = `/assets/aistudio/ABRIR_DIRETO_34659a41.html?userId=${encodeURIComponent(
+  const normalizedBase = import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+
+  const iframeSrc = `${normalizedBase}assets/aistudio/ABRIR_DIRETO_34659a41.html?userId=${encodeURIComponent(
     userKey
   )}&userName=${encodeURIComponent(userName)}&userVip=${userVip}`;
 
